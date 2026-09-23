@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     int valorAnterior=0 ;//float valorAnterior=0 ;
     boolean pulsadoSumar=false;
     boolean sumaActiva=false;
+    boolean pulsadoRestar=false;
+    boolean restaActiva=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         caja2= findViewById(R.id.texto2); //Texto2 es la segunda caja, declarada en xml
         //R. se refiere a algo de paquetes
         sumaActiva=false;
+        restaActiva=false;
     }
 
     public void sumar(View boton){
@@ -35,12 +38,18 @@ public class MainActivity extends AppCompatActivity {
         pulsadoSumar=true; //si está en false, tras pulsar botón "+" no te borra el num anterior
     }
 
+    public void restar(View boton){
+        caja2.setText(textResultado.getText() + " - ");
+        valorAnterior=Integer.parseInt(textResultado.getText().toString());
+        pulsadoRestar=true;
+    }
     public void reset (View boton) {
         //Button btn_reset = (Button) boton;
         textResultado.setText("0");
         caja2.setText("");
         valorAnterior=0;
         pulsadoSumar=true;
+        pulsadoRestar=true;
     }
 
     public void resultado(View boton){
@@ -49,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         if(sumaActiva){
             textResultado.setText(Integer.toString(valorAnterior + Integer.parseInt(textResultado.getText().toString())));
         }
+        if(restaActiva){
+                textResultado.setText(Integer.toString(valorAnterior + Integer.parseInt(textResultado.getText().toString())));
+        }
+
     }
     public void numero (View boton) { //Actúa cuando pulsas un numero
         Button btn_numero = (Button) boton;
@@ -56,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
             textResultado.setText("");
             pulsadoSumar=false;
             sumaActiva=true;
+        }
+        if(pulsadoRestar==true){  //aquí cuando ya se ha pulsado el botón "-", y se pulsan los numeros a restar te resetea la caja principal
+            textResultado.setText("");
+            pulsadoRestar=false;
+            restaActiva=true;
         }
 
         //Esta línea hace que cuando pulsas un número quite primero el 0 antes de añadir el numero pulsado
@@ -72,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
 
 
 
