@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             textResultado.setText(Integer.toString(valorAnterior + Integer.parseInt(textResultado.getText().toString())));
         }
         if(restaActiva){
-                textResultado.setText(Integer.toString(valorAnterior + Integer.parseInt(textResultado.getText().toString())));
+                textResultado.setText(Integer.toString(valorAnterior - Integer.parseInt(textResultado.getText().toString())));
         }
 
     }
@@ -90,6 +90,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
